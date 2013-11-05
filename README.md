@@ -1,8 +1,8 @@
 nbrisk
 ======
 
-A Distributed Event-driven Web Application Framework 
-Uses MongoDB, SignalR, and Durandal 2.0
+A Domain Event-driven Web Application Framework 
+Uses MongoDB, SignalR and Autofac
 
 ## The application
 App
