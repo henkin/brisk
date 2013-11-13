@@ -1,8 +1,7 @@
+using Brisk.Events;
 using MongoDB.Driver.Builders;
-using TemplateLibrary.Events;
-using TemplateLibrary.Repo;
 
-namespace TemplateLibrary.Repository
+namespace Brisk.Repository
 {
  
     public class MongoPersister : MongoBase, IHandle<PersistenceEvent>, IPersister, IService

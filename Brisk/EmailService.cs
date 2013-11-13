@@ -1,4 +1,4 @@
-﻿namespace TemplateLibrary
+﻿namespace Brisk
 {
     public class EmailMessage
     {

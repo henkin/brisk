@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TemplateLibrary
+namespace Brisk
 {
     public class Time
     {

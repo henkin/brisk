@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Autofac;
 using System.Reflection;
-using TemplateLibrary.Events;
-using TemplateLibrary.Repo;
+using Autofac;
+using Brisk.Events;
 
-namespace TemplateLibrary
+namespace Brisk
 {
     public static class ContainerBuilderExtensions
     {

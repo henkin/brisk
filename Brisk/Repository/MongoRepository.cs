@@ -1,13 +1,10 @@
 using System;
 using System.Linq;
-using MongoDB.Bson;
-using MongoDB.Driver;
+using Brisk.Events;
 using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
-using TemplateLibrary.Events;
-using TemplateLibrary.Repo;
 
-namespace TemplateLibrary.Repository
+namespace Brisk.Repository
 {
     public class MongoRepository : MongoBase, IRepository, IService
     {

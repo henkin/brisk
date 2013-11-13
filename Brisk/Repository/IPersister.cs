@@ -1,4 +1,4 @@
-﻿namespace TemplateLibrary
+﻿namespace Brisk.Repository
 {
     public interface IPersister
     {

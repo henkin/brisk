@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using TemplateLibrary.Events;
-using TemplateLibrary.Repo;
+using Brisk.Events;
+using Brisk.Repository;
 
-namespace TemplateLibrary
+namespace Brisk
 {
     public interface IService
     {

@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using System.Configuration;
 
-namespace TemplateLibrary.Repository
+namespace Brisk.Repository
 {
     public class MongoBase
     {

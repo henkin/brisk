@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace TemplateLibrary
+namespace Brisk.Events
 {
     public interface IDomainEvent {}
     public class DomainEvent : Entity, IDomainEvent

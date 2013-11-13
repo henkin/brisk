@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Brisk;
 using NUnit.Framework;
 
 namespace TemplateLibrary.Tests

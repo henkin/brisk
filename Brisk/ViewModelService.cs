@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace TemplateLibrary
+﻿namespace Brisk
 {
     public interface IViewModelService
     {

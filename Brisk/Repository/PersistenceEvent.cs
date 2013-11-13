@@ -1,8 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using Brisk.Events;
 using Newtonsoft.Json;
 
-namespace TemplateLibrary.Repo
+namespace Brisk.Repository
 {
     public enum PersistenceAction
     {

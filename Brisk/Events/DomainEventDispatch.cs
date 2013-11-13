@@ -1,6 +1,6 @@
 using System;
 
-namespace TemplateLibrary
+namespace Brisk.Events
 {
     public class DomainEventDispatch
     {

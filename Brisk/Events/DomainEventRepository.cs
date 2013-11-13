@@ -1,6 +1,6 @@
-﻿using TemplateLibrary.Repository;
+﻿using Brisk.Repository;
 
-namespace TemplateLibrary.Events
+namespace Brisk.Events
 {
     public interface IDomainEventRepository
     {
