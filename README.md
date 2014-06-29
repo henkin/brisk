@@ -1,31 +1,24 @@
 brisk
 ======
-
 A Domain Event-driven Web Application Framework 
+
 Uses MongoDB, SignalR and Autofac
 
-## The application
-App
-ViewModels
-Views
+Brisk supports the following concepts:
 
-## The model
-Entities
-Commands
-Events
+* Domain Events
+* Commands
+* 
 
-## NBrisk.Web
-AppBase - SignalR
-ViewModelBase 
-ViewModelBase
+To use library: 
 
-## NBrisk.Core
-EntityBase
-CommandBase
+Have you application expose public properties.
 
-Repository - Mongo
-Persister - Mongo
-EventPersister - Mongo
+IEventer
+ICommander
 
-EventSynchronizer - 0MQ
-Eventer
+
+# ICommander
+
+Supports Create, Update, Delete, Query
+

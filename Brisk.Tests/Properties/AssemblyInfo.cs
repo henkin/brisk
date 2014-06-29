@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TemplateLibrary.Tests")]
+[assembly: AssemblyTitle("Brisk.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Terex, Inc.")]
-[assembly: AssemblyProduct("TemplateLibrary.Tests")]
-[assembly: AssemblyCopyright("Copyright © Terex, Inc. 2012")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Brisk.Tests")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("72fb998d-034d-49fc-9466-9123340c0fa4")]
+[assembly: Guid("9b48c016-fd1b-4d95-9ba1-c4adfe866c41")]
 
 // Version information for an assembly consists of the following four values:
 //

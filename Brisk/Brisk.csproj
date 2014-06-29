@@ -86,7 +86,6 @@
     <Compile Include="ViewModelService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="key.snk" />
     <None Include="packages.config" />
   </ItemGroup>
