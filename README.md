@@ -12,8 +12,8 @@ Uses MongoDB, SignalR and Autofac
 
 Brisk supports the following concepts:
 
-* Domain Events
-* Commands
+- Domain Events
+- Commands
 
   
 
@@ -21,12 +21,32 @@ To use library:
 
 Have you application expose public properties.
 
-IEventer
-ICommander
+Create an instance of BriskNode.
 
+BriskNode has two Properties:
+- Commander
+- Eventer
 
-# ICommander
-
+### Commander
 Supports Create, Update, Delete, Query
 
+- Create<TEntity>
 
+- Update<TEntity>
+
+- Delete<TEntity>
+
+- Get<TEntity> 
+
+- Find<TEntity>
+
+### Eventer
+
+- FindAll() 
+
+- Find<TEntity>
+
+- FindByEvent<TEntityEvent<TEntity>>
+
+
+# Your domain Entity is 
