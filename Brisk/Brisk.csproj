@@ -68,9 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppViewModel.cs" />
+    <Compile Include="Commands\Commander.cs" />
     <Compile Include="ContainerBuilderExtensions.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Entity.cs" />
+    <Compile Include="EntityService.cs" />
+    <Compile Include="Events\EntityEvent.cs" />
     <Compile Include="Events\EventService.cs" />
     <Compile Include="Events\DomainEvent.cs" />
     <Compile Include="Events\DomainEventDispatch.cs" />

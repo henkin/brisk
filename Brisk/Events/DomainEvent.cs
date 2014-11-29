@@ -31,10 +31,10 @@ namespace Brisk.Events
                 );
         }
 
-        internal void Dispatch()
-        {
-            throw new NotImplementedException();
-        }
+        //internal void Dispatch()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 
     public static class DomainEventExtensionMethods
@@ -44,4 +44,6 @@ namespace Brisk.Events
             return domainEvents.Where(d => d.CompletedAt == null && d.DispatchedAt == null);
         }
     }
+
+
 }

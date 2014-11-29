@@ -6,11 +6,18 @@ namespace Brisk.Repository
 {
     public enum PersistenceAction
     {
-        Add,
+        Create,
         Update,
         Delete
     }
 
+    
+    public class PersistenceEvent<TEntity> : PersistenceEvent
+    {
+        public PersistenceEvent(Entity entity, PersistenceAction action) : base(entity, action)
+        {
+        }
+    }
     public class PersistenceEvent : DomainEvent
     {
         public string EntityType { get; set; }

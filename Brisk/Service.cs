@@ -20,7 +20,7 @@ namespace Brisk
 
         protected Task Add(Entity add)
         {
-            return EventService.Raise(new PersistenceEvent(add, PersistenceAction.Add));
+            return EventService.Raise(new PersistenceEvent(add, PersistenceAction.Create));
         }
 
 		protected Task Update(Entity add)

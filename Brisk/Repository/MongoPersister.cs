@@ -14,7 +14,7 @@ namespace Brisk.Repository
 
             switch (args.PersistenceAction)
             {
-                case PersistenceAction.Add: Add(args.Entity);
+                case PersistenceAction.Create: Add(args.Entity);
                     break;
                 case PersistenceAction.Update: Update(args.Entity);
                     break;

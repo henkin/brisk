@@ -100,12 +100,7 @@ namespace Brisk.Events
             _persister.Add(domainEvent);
         }
 
-        public class Chainer
-        {
-            
-        }
-        //#region IDisposable Members
-
+        
         //public void Dispose()
         //{
         //    if (_processEventsThreadLoop != null && _processEventsThreadLoop.IsAlive)
