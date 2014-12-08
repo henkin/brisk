@@ -1,11 +1,13 @@
-﻿using NUnit.Framework;
+﻿using System.CodeDom;
+using NUnit.Framework;
 
 namespace Brisk.Tests
 {
     [TestFixture]
     public class ApplicationFixture
     {
-        private Application _app;
+
+        private IApplication _app;
         public ApplicationFixture()
         {
             
@@ -21,20 +23,14 @@ namespace Brisk.Tests
         /// get prompt. Issue command, get response. 
         /// </summary>
         [Test]
-        public void AppDeployed_StartsUp_ShowsPrompt_TakesCommand()
+        public void AppDeployed_Create_TestItem_GetSuccessResponse_QueryForItem_LookForEvents()
         {
-            // one app
+            //_app.Start();
 
-            // test all three layers. 
-        }
-    }
+            var testItem = new TestItem();
+            var command = _app.Commander.Create(testItem);
 
-    internal class Application
-    {
-        public static Application Create()
-        {
-
-            return null;
+            
         }
     }
 }

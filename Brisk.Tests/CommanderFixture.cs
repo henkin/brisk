@@ -13,11 +13,9 @@ namespace Brisk.Tests
         [Test]
         public void Create_Default_Returns_Successful_CommandResult()
         {
-            var builder = new ContainerBuilder();
-            builder.RegisterApp(typeof(Brisk.Events.EventService).Assembly);
-            var container = builder.Build();
-            
-            var result = container.Resolve<ICommander>().Create(new TestItem());
+            var app = Application.Create();
+
+            var result = app.Commander.Create(new TestItem());
             var actualResult = result.Result;
             
             Assert.That(actualResult, Is.InstanceOf<CommandResult<Create<TestItem>>>());
