@@ -25,7 +25,7 @@ namespace Brisk.Events
 
     public class EventService : IEventService, IService
     {
-        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private ILifetimeScope _scope;
         private IHandleEverything _globalHandler;
         private IDomainEventRepository _persister;

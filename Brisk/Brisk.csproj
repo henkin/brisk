@@ -70,7 +70,6 @@
     <Compile Include="Application.cs" />
     <Compile Include="AppViewModel.cs" />
     <Compile Include="Commander.cs" />
-    <Compile Include="ContainerBuilderExtensions.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityService.cs" />

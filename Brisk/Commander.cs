@@ -46,23 +46,32 @@ namespace Brisk
         public EntityServiceFactory EntityServiceFactory { get; set; }
         public async Task<CommandResult<Create<TEntity>>> Create<TEntity>(TEntity entity) where TEntity : Entity
         {
-            var entityService = GetEntityService<TEntity>();
-            
-            entityService.Create(entity);
-            
-            var command = new Create<TEntity>(entity);
-            
             // call 'validate' on the service
             
             // call 'create' on the service
 
             // send "created" event. 
-
+            var entityService = GetEntityService<TEntity>();
             var task = new Task<CommandResult<Create<TEntity>>>(() =>
-                new CommandResult<Create<TEntity>>(command)
-                );
+            {
+                entityService.Create(entity);
+                var command = new Create<TEntity>(entity);
+                // save command
+
+                // update command
+
+                // raise command succeeded event
+                Raise(new Created<TEntity>(entity));
+
+                return new CommandResult<Create<TEntity>>(command) { IsSuccess = true };
+            });
             task.RunSynchronously();
             return await task;// task;
+        }
+
+        private void Raise<TEntity>(EntityEvent<TEntity> created)
+        {
+            Eventer.Raise(created);
         }
 
         private IEntityService<TEntity> GetEntityService<TEntity>() where TEntity : Entity
