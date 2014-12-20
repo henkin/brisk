@@ -1,9 +1,30 @@
-﻿namespace Brisk.Events
-{
+﻿using Brisk.Repository;
 
-    public class Created<TEntity> : EntityEvent<TEntity> { public Created(TEntity entity) : base(entity) { } }
-    public class Updated<TEntity> : EntityEvent<TEntity> { public Updated(TEntity entity) : base(entity) { } }
-    public class Deleted<TEntity> : EntityEvent<TEntity> { public Deleted(TEntity entity) : base(entity) { } }
+namespace Brisk.Events
+{
+    public class Created<TEntity> : PersistenceEvent<TEntity> where TEntity : Entity
+    {
+        public Created(TEntity entity) : base(entity, PersistenceAction.Create)
+        {
+        }
+    }
+
+    public class Updated<TEntity> : PersistenceEvent<TEntity> where TEntity : Entity
+    {
+        public Updated(TEntity entity)
+            : base(entity, PersistenceAction.Update)
+        {
+        }
+    }
+
+    public class Deleted<TEntity> : PersistenceEvent<TEntity> where TEntity : Entity
+    {
+        public Deleted(TEntity entity)
+            : base(entity, PersistenceAction.Delete)
+        {
+        }
+    }
+
     //public class Retrieve<TEntity> : Command<TEntity> { }
 
     public class EntityEvent<TEntity> : DomainEvent

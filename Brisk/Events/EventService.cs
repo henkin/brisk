@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
+using Brisk.Repository;
 
 namespace Brisk.Events
 {
@@ -50,14 +52,26 @@ namespace Brisk.Events
         {
             logger.Debug(domainEvent);
             var handlerType = typeof (IHandle<>).MakeGenericType(domainEvent.GetType());
+
+            //if (domainEvent is PersistenceEvent)
+            //    handlerType = typeof(IHandle<>).MakeGenericType(typeof(PersistenceEvent));
+
             var handlers = _scope.Resolve(typeof (IEnumerable<>).MakeGenericType(handlerType));
            
+            if (handlers == null)
+                throw new Exception();
+
+            if (!((handlers as IEnumerable<DomainEvent>).Any()))
+                logger.Debug("no handlers found");
+
             var method = typeof (EventService).GetMethod("DispatchHandlers");
             var dispatchMethod = method.MakeGenericMethod(handlers.GetType(), domainEvent.GetType());
             dispatchMethod.Invoke(this, new[] {handlers, domainEvent});
 
             if (_globalHandler != null)
                 _globalHandler.Handle(domainEvent);
+
+            _persister.Add(domainEvent);
         }
 
         public void DispatchHandlers<THandlers, TEvent>(THandlers handlers, TEvent domainEvent) 
@@ -67,8 +81,7 @@ namespace Brisk.Events
             bool handled = true;
             domainEvent.DispatchedAt = DateTime.UtcNow;
 
-            if (!handlers.Any())
-                logger.Debug("no handlers found");
+            
 
             foreach (var handler in handlers)
             {
@@ -97,7 +110,6 @@ namespace Brisk.Events
             if (handled)
                 domainEvent.CompletedAt = DateTime.Now;
 
-            _persister.Add(domainEvent);
         }
 
         

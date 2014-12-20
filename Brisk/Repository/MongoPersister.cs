@@ -1,3 +1,4 @@
+using System;
 using Brisk.Events;
 using MongoDB.Driver.Builders;
 
@@ -25,11 +26,13 @@ namespace Brisk.Repository
 
         public void Add(Entity entity)
         {
+            entity.CreatedAt = DateTime.UtcNow;
             GetCollection(entity.GetType()).Save(entity);
         }
 
         public void Update(Entity entity)
         {
+            entity.UpdatedAt = DateTime.UtcNow;
             GetCollection(entity.GetType()).Save(entity);
         }
         public void Delete(Entity entity)

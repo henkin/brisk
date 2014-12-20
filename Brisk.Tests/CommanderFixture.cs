@@ -11,16 +11,34 @@ namespace Brisk.Tests
     public class CommanderFixture
     {
         [Test]
-        public void Create_Default_Returns_Successful_CommandResult()
+        public async void Create_Default_Returns_Successful_CommandResult()
         {
             var app = Application.Create();
 
-            var result = app.Commander.Create(new TestItem());
-            var actualResult = result.Result;
-            
-            Assert.That(actualResult, Is.InstanceOf<CommandResult<Create<TestItem>>>());
-            Assert.That(actualResult.IsSuccess, "Unsuccessful");
+            var entity = new TestItem() { Name = "testName" };
+            var actualResult = app.Commander.Create(entity);
+
+
+            Assert.That( actualResult,Is.InstanceOf<CommandResult<Create<TestItem>>>());
+            Assert.That( actualResult.IsSuccess);
+
+            var testItem = app.Repository.GetByID<TestItem>(entity.ID); 
+            Assert.That(testItem.Name, Is.EqualTo(entity.Name));
         }
+
+        [Test]
+        public void Create_Default_Raises_Created_Event()
+        {
+            //var commander = new Commander();
+
+
+            //var result = app.Commander.Create(new TestItem());
+
+
+            //Assert.That(actualResult, Is.InstanceOf<CommandResult<Create<TestItem>>>());
+            //Assert.That(actualResult.IsSuccess, "Unsuccessful");
+        }
+
 
         [Test]
         public void Create_Default_Raises_Failed_Event_When_Failed()
@@ -30,12 +48,8 @@ namespace Brisk.Tests
     }
 
 
-    public class TestItem : Entity
-    {
-    }
-
     public class TestItemService : EntityService<TestItem>
     {
-        
+
     }
 }

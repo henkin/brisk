@@ -14,12 +14,17 @@ namespace Brisk.Repository
         public MongoBase() : this("") {}
         public MongoBase(string databaseNameSuffix)
         {
-            const string connectionString = "mongodb://localhost";
-            _client = new MongoClient(connectionString);
+            _client = new MongoClient(GetConnectionString());
             _mongoServer = _client.GetServer();
 
             var dbString = ConfigurationManager.AppSettings["Database"];
             _mongoDatabase = _mongoServer.GetDatabase(dbString + databaseNameSuffix);
+        }
+
+        private static string GetConnectionString()
+        {
+            const string connectionString = "mongodb://localhost";
+            return connectionString;
         }
 
         protected MongoCollection<BsonDocument> GetCollection<T>() where T : class, IIdentifiable

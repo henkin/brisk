@@ -22,7 +22,7 @@ namespace Brisk
             if (!Validate(entity))
                 throw new InvalidOperationException("Failed validation");
 
-            Raise(new Created<TEntity>(entity));
+            
         }
 
         private void Raise(EntityEvent<TEntity> entityEvent)

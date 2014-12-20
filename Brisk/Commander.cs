@@ -37,41 +37,36 @@ namespace Brisk
 
     public interface ICommander
     {
-        Task<CommandResult<Create<TEntity>>> Create<TEntity>(TEntity entity) where TEntity : Entity;
+        CommandResult<Create<TEntity>> Create<TEntity>(TEntity entity) where TEntity : Entity;
     }
 
     public class Commander : ICommander, IService
     {
         public IEventService Eventer { get; set; }
+        public IPersister Persister { get; set; }
         public EntityServiceFactory EntityServiceFactory { get; set; }
-        public async Task<CommandResult<Create<TEntity>>> Create<TEntity>(TEntity entity) where TEntity : Entity
+        public CommandResult<Create<TEntity>> Create<TEntity>(TEntity entity) where TEntity : Entity
         {
+            
+            
             // call 'validate' on the service
             
             // call 'create' on the service
 
             // send "created" event. 
+
             var entityService = GetEntityService<TEntity>();
-            var task = new Task<CommandResult<Create<TEntity>>>(() =>
-            {
-                entityService.Create(entity);
-                var command = new Create<TEntity>(entity);
-                // save command
 
-                // update command
+            entityService.Create(entity);
 
-                // raise command succeeded event
-                Raise(new Created<TEntity>(entity));
+            var command = new Create<TEntity>(entity);
 
-                return new CommandResult<Create<TEntity>>(command) { IsSuccess = true };
-            });
-            task.RunSynchronously();
-            return await task;// task;
-        }
+            Eventer.Raise<PersistenceEvent>(new Created<TEntity>(entity));
 
-        private void Raise<TEntity>(EntityEvent<TEntity> created)
-        {
-            Eventer.Raise(created);
+            Persister.Add(entity);
+            
+            return new CommandResult<Create<TEntity>>(command) { IsSuccess = true };
+           
         }
 
         private IEntityService<TEntity> GetEntityService<TEntity>() where TEntity : Entity
@@ -87,17 +82,16 @@ namespace Brisk
 
         public EntityServiceFactory(IComponentContext container)
         {
-            this._container = container;
+            _container = container;
 
         }
 
         public IEntityService<T> Create<T>() where T : Entity
         {
-    //        http://peterspattern.com/generate-generic-factories-with-autofac/
-
+            // http://peterspattern.com/generate-generic-factories-with-autofac/
             EntityService<T> entityService;
             
-            this._container.TryResolve<EntityService<T>>(out entityService);
+            _container.TryResolve(out entityService);
             if (entityService == null)
             {
                 return new EntityService<T>() { EventService = _container.Resolve<IEventService>()};
