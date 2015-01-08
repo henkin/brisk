@@ -72,6 +72,10 @@
     <Compile Include="TestItem.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Brisk.Mongo\Brisk.Mongo.csproj">
+      <Project>{f0fd02de-3d1b-416b-9402-694e7e4975c6}</Project>
+      <Name>Brisk.Mongo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Brisk\Brisk.csproj">
       <Project>{b54890da-d662-49e7-bd97-f4b1caf9e610}</Project>
       <Name>Brisk</Name>

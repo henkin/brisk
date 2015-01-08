@@ -1,4 +1,4 @@
-﻿using Brisk.Repository;
+﻿using Brisk.Persistence;
 
 namespace Brisk.Events
 {

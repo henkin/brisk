@@ -5,7 +5,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Autofac;
-using Brisk.Repository;
+using Brisk.Persistence;
+using Brisk.Persistence;
 
 namespace Brisk.Events
 {
@@ -30,13 +31,13 @@ namespace Brisk.Events
         private static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private ILifetimeScope _scope;
         private IHandleEverything _globalHandler;
-        private IDomainEventRepository _persister;
+        private IEventPersister _eventPersister;
         private Thread _processEventsThreadLoop;
 
-        public EventService(ILifetimeScope scope, IDomainEventRepository persister, IHandleEverything globalHandler = null)
+        public EventService(ILifetimeScope scope, IEventPersister eventPersister, IHandleEverything globalHandler = null)
         {
             _scope = scope;
-            _persister = persister;
+            _eventPersister = eventPersister;
             _globalHandler = globalHandler;
         }
 
@@ -61,8 +62,8 @@ namespace Brisk.Events
             if (handlers == null)
                 throw new Exception();
 
-            if (!((handlers as IEnumerable<DomainEvent>).Any()))
-                logger.Debug("no handlers found");
+            //if (!((handlers as IEnumerable<DomainEvent>).Any()))
+            //    logger.Debug("no handlers found");
 
             var method = typeof (EventService).GetMethod("DispatchHandlers");
             var dispatchMethod = method.MakeGenericMethod(handlers.GetType(), domainEvent.GetType());
@@ -71,7 +72,7 @@ namespace Brisk.Events
             if (_globalHandler != null)
                 _globalHandler.Handle(domainEvent);
 
-            _persister.Add(domainEvent);
+            _eventPersister.Add(domainEvent);
         }
 
         public void DispatchHandlers<THandlers, TEvent>(THandlers handlers, TEvent domainEvent) 

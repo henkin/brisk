@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Brisk.Events;
-using Brisk.Repository;
+using Brisk.Persistence;
 
 namespace Brisk
 {

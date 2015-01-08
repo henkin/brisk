@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk", "Brisk\Brisk.csproj", "{B54890DA-D662-49E7-BD97-F4B1CAF9E610}"
 EndProject
@@ -11,6 +11,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.Mongo", "Brisk.Mongo\Brisk.Mongo.csproj", "{F0FD02DE-3D1B-416B-9402-694E7E4975C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.Mongo.Tests", "Brisk.Mongo.Tests\Brisk.Mongo.Tests.csproj", "{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.BrisketDB", "Brisk.BrisketDB\Brisk.BrisketDB.csproj", "{41A302E6-788E-4831-9EC1-5A5898E970C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.BrisketDB.Tests", "Brisk.BrisketDB.Tests\Brisk.BrisketDB.Tests.csproj", "{5344338B-EC2A-4809-9991-E50DD9F5A3FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +34,22 @@ Global
 		{D3CACD56-1BE5-45FA-AEB9-126D16C193D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3CACD56-1BE5-45FA-AEB9-126D16C193D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3CACD56-1BE5-45FA-AEB9-126D16C193D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0FD02DE-3D1B-416B-9402-694E7E4975C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0FD02DE-3D1B-416B-9402-694E7E4975C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0FD02DE-3D1B-416B-9402-694E7E4975C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0FD02DE-3D1B-416B-9402-694E7E4975C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41A302E6-788E-4831-9EC1-5A5898E970C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41A302E6-788E-4831-9EC1-5A5898E970C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41A302E6-788E-4831-9EC1-5A5898E970C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41A302E6-788E-4831-9EC1-5A5898E970C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5344338B-EC2A-4809-9991-E50DD9F5A3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5344338B-EC2A-4809-9991-E50DD9F5A3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5344338B-EC2A-4809-9991-E50DD9F5A3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5344338B-EC2A-4809-9991-E50DD9F5A3FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

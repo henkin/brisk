@@ -16,13 +16,12 @@ namespace Brisk
         {
             return true;
         }
+
         public virtual void Create(TEntity entity)
         {
             // throw exception if it didn't work. 
             if (!Validate(entity))
                 throw new InvalidOperationException("Failed validation");
-
-            
         }
 
         private void Raise(EntityEvent<TEntity> entityEvent)
@@ -34,5 +33,7 @@ namespace Brisk
     public interface IEntityService<in TEntity> where TEntity : Entity
     {
         void Create(TEntity entity);
+
+        bool Validate(TEntity entity);
     }
 }

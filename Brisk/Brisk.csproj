@@ -70,24 +70,19 @@
     <Compile Include="Application.cs" />
     <Compile Include="AppViewModel.cs" />
     <Compile Include="Commander.cs" />
-    <Compile Include="EmailService.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="EntityService.cs" />
     <Compile Include="Events\EntityEvent.cs" />
     <Compile Include="Events\EventService.cs" />
     <Compile Include="Events\DomainEvent.cs" />
     <Compile Include="Events\DomainEventDispatch.cs" />
-    <Compile Include="Time.cs" />
+    <Compile Include="Persistence\IEventPersister.cs" />
     <Compile Include="Events\DomainEventRepository.cs" />
-    <Compile Include="Repository\IPersister.cs" />
-    <Compile Include="Repository\MongoBase.cs" />
-    <Compile Include="Repository\MongoPersister.cs" />
-    <Compile Include="Repository\MongoRepository.cs" />
+    <Compile Include="Persistence\IPersister.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\PersistenceEvent.cs" />
-    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Persistence\PersistenceEvent.cs" />
+    <Compile Include="Persistence\IRepository.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="ViewModelService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

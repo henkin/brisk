@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Autofac;
 using Brisk.Events;
-using Brisk.Repository;
+using Brisk.Persistence;
 
 namespace Brisk
 {
@@ -28,13 +28,15 @@ namespace Brisk
         public IEventService Eventer { get; set; }
         public IRepository Repository { get; set; }
 
-        public static IApplication Create(params Assembly[] assemblies)
+        
+        public static IApplication Create(Type persisterType = null, params Assembly[] assemblies)
         {
             var builder = new ContainerBuilder();
-            builder.RegisterApp();
+            
+            RegisterApp(builder);
+            RegisterPersister(builder, persisterType);
 
             // todo: unit-of-work containers
-           
             var container = builder.Build();
             var app = container.Resolve<IApplication>();
 
@@ -42,16 +44,22 @@ namespace Brisk
             return app;
         }
 
+        private static void RegisterPersister(ContainerBuilder builder, Type persisterType)
+        {
+            // if nothing specified, default to Brisket DB
+            if (persisterType == null)
+                throw new ArgumentNullException("persisterType");
+
+            builder.RegisterType(persisterType).As<IPersister>().InstancePerMatchingLifetimeScope();
+            builder.RegisterType(persisterType).As<IRepository>().InstancePerMatchingLifetimeScope();
+        }
+
         internal void Start()
         {
             //throw new System.NotImplementedException();
         }
-    }
 
-    public static class ContainerBuilderExtensions
-    {
-
-        public static void RegisterApp(this ContainerBuilder builder, params Assembly[] assemblies)
+        private static void RegisterApp(ContainerBuilder builder, params Assembly[] assemblies)
         {
             AppDomain appDomain = AppDomain.CurrentDomain;
             IEnumerable<Assembly> scanAssemblies = assemblies.Length > 0 ? assemblies : appDomain.GetAssemblies();
@@ -61,11 +69,12 @@ namespace Brisk
                 builder.RegisterType<EntityServiceFactory>().PropertiesAutowired().SingleInstance();
                 builder.RegisterGeneric(typeof(EntityService<>)).PropertiesAutowired().InstancePerDependency();
 
+
                 // Register Services
                 builder.RegisterAssemblyTypes(asm)
                     .Where(t => typeof(IService).IsAssignableFrom(t)
-                        && t.IsClass
-                        && !t.IsAbstract)
+                                && t.IsClass
+                                && !t.IsAbstract)
                     .AsImplementedInterfaces()
                     .PropertiesAutowired()
                     .InstancePerDependency();
@@ -73,9 +82,9 @@ namespace Brisk
                 // Register Singletons
                 builder.RegisterAssemblyTypes(asm)
                     .Where(t => (
-                                    typeof(IEventService).IsAssignableFrom(t) ||
-                                    typeof(IApplication).IsAssignableFrom(t)
-                                )
+                        typeof(IEventService).IsAssignableFrom(t) ||
+                        typeof(IApplication).IsAssignableFrom(t)
+                        )
                                 && t.IsClass
                                 && !t.IsAbstract)
                     .AsImplementedInterfaces()
@@ -83,5 +92,9 @@ namespace Brisk
                     .SingleInstance();
             }
         }
+    }
+
+    public static class ContainerBuilderExtensions
+    {
     }
 }
