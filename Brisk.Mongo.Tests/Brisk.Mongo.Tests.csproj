@@ -39,8 +39,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MongoPersisterFixture.cs" />
+    <Compile Include="MongoPersisterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Brisk.Mongo\Brisk.Mongo.csproj">
+      <Project>{F0FD02DE-3D1B-416B-9402-694E7E4975C6}</Project>
+      <Name>Brisk.Mongo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brisk.Tests\Brisk.Tests.csproj">
+      <Project>{D3CACD56-1BE5-45FA-AEB9-126D16C193D1}</Project>
+      <Name>Brisk.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brisk\Brisk.csproj">
+      <Project>{B54890DA-D662-49E7-BD97-F4B1CAF9E610}</Project>
+      <Name>Brisk</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
