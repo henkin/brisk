@@ -7,6 +7,7 @@ using Autofac;
 using Brisk.Events;
 using NUnit.Framework;
 using Brisk;
+using Brisk.Application;
 using Brisk.Mongo;
 
 namespace Brisk.Tests
@@ -25,7 +26,7 @@ namespace Brisk.Tests
             Assert.That(actualResult, Is.InstanceOf<CommandResult<Create<TestItem>>>());
             Assert.That(actualResult.IsSuccess);
 
-            var testItem = app.Repository.GetByID<TestItem>(entity.ID);
+            var testItem = app.Repository.GetByID<TestItem>(entity.Id);
             Assert.That(testItem.Name, Is.EqualTo(entity.Name));
         }
 
@@ -42,7 +43,7 @@ namespace Brisk.Tests
             latest.Name = "Updated";
             var actualUpdateResult = app.Commander.Update(latest);
 
-            var testItem = app.Repository.GetByID<TestItem>(latest.ID);
+            var testItem = app.Repository.GetByID<TestItem>(latest.Id);
             Assert.That(testItem.Name, Is.EqualTo("Updated"));
         }
 
@@ -58,7 +59,7 @@ namespace Brisk.Tests
 
             Assert.That(actualResult.IsSuccess);
 
-            var testItem = app.Repository.GetByID<TestItem>(testEntity.ID);
+            var testItem = app.Repository.GetByID<TestItem>(testEntity.Id);
             Assert.That(testItem == null);
         }
 
@@ -66,7 +67,7 @@ namespace Brisk.Tests
         [Test]
         public void TenThousandTestItemsSerial()
         {
-            var app = Application.Create();
+            var app = TestApp.Create();
 
             for (int j = 0; j < 32000; j++)
             {
@@ -80,7 +81,7 @@ namespace Brisk.Tests
         [Test]
         public void TenThousandTestItemsParallel()
         {
-            var app = Application.Create();
+            var app = TestApp.Create();
 
             const int n = 8;
             // Construct started tasks
@@ -127,9 +128,9 @@ namespace Brisk.Tests
 
     public static class TestApp
     {
-        public static IApplication Create()
+        public static IApp Create()
         {
-            return Application.Create(typeof(MongoPersister));
+            return App.Create();
         }
     }
 

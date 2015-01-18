@@ -28,7 +28,7 @@ namespace Brisk.Events
 
     public class EventService : IEventService, IService
     {
-        private static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
         private ILifetimeScope _scope;
         private IHandleEverything _globalHandler;
         private IEventPersister _eventPersister;
@@ -43,7 +43,7 @@ namespace Brisk.Events
 
         public Task Raise<TEvent>(TEvent eventToDispatch) where TEvent : DomainEvent
         {
-            logger.Debug("Raised: {0}", eventToDispatch.GetType().Name);
+            _logger.Debug("Raised: {0}", eventToDispatch.GetType().Name);
             var task = new Task(() => DispatchEvent(eventToDispatch));
             task.Start();
             return task;
@@ -51,7 +51,7 @@ namespace Brisk.Events
 
         private void DispatchEvent(DomainEvent domainEvent)
         {
-            logger.Debug(domainEvent);
+            _logger.Debug(domainEvent);
             var handlerType = typeof (IHandle<>).MakeGenericType(domainEvent.GetType());
 
             //if (domainEvent is PersistenceEvent)
@@ -95,7 +95,7 @@ namespace Brisk.Events
                 catch (Exception e)
                 {
                     handled = false;
-                    logger.Error("Dispatching event {0} failed: {1}", domainEvent, e.Message);
+                    _logger.Error("Dispatching event {0} failed: {1}", domainEvent, e.Message);
                     dispatch.Error(e);
                 }
 
@@ -103,9 +103,9 @@ namespace Brisk.Events
                 domainEvent.DispatchedAt = DateTime.UtcNow;
 
                 if (dispatch.IsSuccessful)
-                    logger.Debug(dispatch);
+                    _logger.Debug(dispatch);
                 else
-                    logger.Error(dispatch);
+                    _logger.Error(dispatch);
             }
 
             if (handled)

@@ -5,7 +5,7 @@ namespace Brisk
 {
     public interface IIdentifiable
     {
-        Guid ID { get; set; }
+        Guid Id { get; set; }
     }
 
     public interface IOwnable
@@ -16,13 +16,13 @@ namespace Brisk
     public class Entity : IIdentifiable
     {
         [BsonId]
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
         public Entity()
         {
-            ID = Guid.NewGuid();
+            Id = Guid.NewGuid();
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
         }

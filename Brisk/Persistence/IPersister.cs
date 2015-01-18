@@ -1,9 +1,9 @@
-﻿namespace Brisk.Persistence
+namespace Brisk.Persistence
 {
     public interface IPersister
     {
-        void Add(Entity entity);
-        void Update(Entity entity);
-        void Delete(Entity entity);
+        void Add<T>(T entity) where T : Entity;
+        void Update<T>(T entity) where T : Entity;
+        void Delete<T>(T entity) where T : Entity;
     }
 }

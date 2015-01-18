@@ -25,21 +25,21 @@ namespace Brisk.Mongo
         //    }
         //}
 
-        public void Add(Entity entity)
+        public void Add<T>(T entity) where T : Entity
         {
             entity.CreatedAt = entity.UpdatedAt = DateTime.UtcNow;
             GetCollection(entity.GetType()).Save(entity, WriteConcern.Unacknowledged);
         }
 
-        public void Update(Entity entity)
+        public void Update<T>(T entity) where T : Entity
         {
             entity.UpdatedAt = DateTime.UtcNow;
             GetCollection(entity.GetType()).Save(entity, WriteConcern.Unacknowledged);
         }
 
-        public void Delete(Entity entity)
+        public void Delete<T>(T entity) where T : Entity
         {
-            GetCollection(entity.GetType()).Remove(Query.EQ("_id", entity.ID), WriteConcern.Unacknowledged);
+            GetCollection(entity.GetType()).Remove(Query.EQ("_id", entity.Id), WriteConcern.Unacknowledged);
         }
     }
 }
