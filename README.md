@@ -1,6 +1,14 @@
 ### Brisk Event Source Application Framework 
 
-Using Event Sourcing - the events are rest based. Two axis - entities and verbs. create commands. 
+
+
+Using the idea of Event Sourcing, this project aims to develop a reusable approach to building applications.
+Modern applications have many demands made of them - be scalable, reselient, secure, etc. To maintain my sanity as a developer, I would also place an important constraint on the system - 
+be simple. 
+I like DDD, event sourcing, reactive systems, nosql databases, containerization, and open source. 
+
+
+- the events are rest based. Two axis - entities and verbs. create commands. 
 
 Command are CreateItem
 UpdateItem
