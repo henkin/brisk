@@ -13,14 +13,16 @@ var router = express.Router();
 //   console.info('req.body.name: ', req.body.name);
 //   res.send({id: 'someide'});
 // });
-function runCommand(method, thing, id, body) {
-  console.log("command: ", method, thing, id);
-  let singularThing = inflection.singularize(thing);
+function createCommand(method, thing, id, body) {
+  //console.log("command: ", method, thing, id);
+  //let singularThing = inflection.singularize(thing);
+  //let commandClass = new require('../commands/' + thing);
 
-  let commandClass = new require('../commands/' + thing);
-  let command = new commandClass();
+  // we want to load the right command
+  let commandClass = new require('../commands/taskCreate');
+  let command = new commandClass({id: "i'm a thing"});
 
-  command.create(body);
+  return command;
   // GET tasks -> tasks.getAll()
   // POST tasks -> tasks.create(task)
   // GET task/1 -> tasks.getById(id);
@@ -36,8 +38,11 @@ router.use('/:thing/:id?', function(req, res, next) {
 
   console.info(`thing: ${thing}, id: ${id}, ${req.url}, body: ${req.body}`);
 
-  let command = runCommand(req.method, thing, id);
-  res.send({status: 'you made it'});
+  let command = createCommand(req.method, thing, id);
+  command.run().then(function(result) {
+    res.send(result);
+  });
+  
 });
 
 
