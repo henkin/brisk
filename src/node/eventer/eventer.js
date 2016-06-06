@@ -14,11 +14,15 @@ function eventer()
             }
             //console.log("event raised! ", event);
             return initPromise.then(function() {
-                return r.db("brisk").table('events').insert({ev: event}).run().then(function (x) {
-                    console.log("insert happened", x);
-                }).error(handleError)
+                return insertEvent(event);
             });
         }
+    }
+
+    function insertEvent(event) {
+        return r.db("brisk").table('events').insert(event).run().then(function (x) {
+            console.log("event inserted", x);
+        }).error(handleError);
     }
 
     function handleError(err) {
@@ -26,13 +30,24 @@ function eventer()
     }
 
     function createDatabaseAndTable() {
-        return r.dbCreate('brisk').run().then(function(x) {
-            console.log('db created: ', x)
-        }).then(function(z) {
-            return r.db('brisk').tableCreate('events').run().then(function(y) {
-                console.log('table created', y);
-            });
-        }).error(handleError);
+        return r.dbList().contains('brisk')
+            .do(function (databaseExists) {
+                return r.branch(
+                    databaseExists,
+                    {dbs_created: 0},
+                    r.dbCreate('brisk')
+                );
+            }).run()
+            .then(function (x) {
+                console.log('db exists: ', x)
+            })
+            .then(function (z) {
+                return r.db('brisk').tableCreate('events').run().then(function (y) {
+                    console.log('table created', y);
+                }).catch(function(y) {
+                    console.log("failed to create table");
+                });
+            }).error(handleError);
     }
 }
 

@@ -20,7 +20,7 @@ function createCommand(method, thing, id, body) {
 
   // we want to load the right command
   let commandClass = new require('../commands/taskCreate');
-  let command = new commandClass({id: "i'm a thing"});
+  let command = new commandClass({method, thing, body});
 
   return command;
   // GET tasks -> tasks.getAll()
