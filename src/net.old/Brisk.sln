@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk", "Brisk\Brisk.csproj", "{B54890DA-D662-49E7-BD97-F4B1CAF9E610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.Tests", "Brisk.Tests\Brisk.Tests.csproj", "{D3CACD56-1BE5-45FA-AEB9-126D16C193D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{00642E34-DB88-47B5-A52F-5B83AED68F4D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.Mongo", "Brisk.Mongo\Brisk.Mongo.csproj", "{F0FD02DE-3D1B-416B-9402-694E7E4975C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.Mongo.Tests", "Brisk.Mongo.Tests\Brisk.Mongo.Tests.csproj", "{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.RavenDB", "Brisk.RavenDB\Brisk.RavenDB.csproj", "{24D54273-2168-4439-BEFF-AC9FBD375160}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.Application", "Brisk.Application\Brisk.Application.csproj", "{2F71AF08-08EA-4C1F-B289-E05F5268961B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.Application.Tests", "Brisk.Application.Tests\Brisk.Application.Tests.csproj", "{238F1D6A-D86B-432A-8CE5-D1B04284D4B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brisk.RavenDB.Tests", "Brisk.RavenDB.Tests\Brisk.RavenDB.Tests.csproj", "{52E521FC-042D-495E-A555-A6647EE32C97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B54890DA-D662-49E7-BD97-F4B1CAF9E610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B54890DA-D662-49E7-BD97-F4B1CAF9E610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B54890DA-D662-49E7-BD97-F4B1CAF9E610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B54890DA-D662-49E7-BD97-F4B1CAF9E610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3CACD56-1BE5-45FA-AEB9-126D16C193D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3CACD56-1BE5-45FA-AEB9-126D16C193D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3CACD56-1BE5-45FA-AEB9-126D16C193D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3CACD56-1BE5-45FA-AEB9-126D16C193D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0FD02DE-3D1B-416B-9402-694E7E4975C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0FD02DE-3D1B-416B-9402-694E7E4975C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0FD02DE-3D1B-416B-9402-694E7E4975C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0FD02DE-3D1B-416B-9402-694E7E4975C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B64DEAC5-CB3B-489B-A2FA-CE31AD8AD644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D54273-2168-4439-BEFF-AC9FBD375160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D54273-2168-4439-BEFF-AC9FBD375160}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D54273-2168-4439-BEFF-AC9FBD375160}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D54273-2168-4439-BEFF-AC9FBD375160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F71AF08-08EA-4C1F-B289-E05F5268961B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F71AF08-08EA-4C1F-B289-E05F5268961B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F71AF08-08EA-4C1F-B289-E05F5268961B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F71AF08-08EA-4C1F-B289-E05F5268961B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{238F1D6A-D86B-432A-8CE5-D1B04284D4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{238F1D6A-D86B-432A-8CE5-D1B04284D4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{238F1D6A-D86B-432A-8CE5-D1B04284D4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{238F1D6A-D86B-432A-8CE5-D1B04284D4B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E521FC-042D-495E-A555-A6647EE32C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E521FC-042D-495E-A555-A6647EE32C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E521FC-042D-495E-A555-A6647EE32C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E521FC-042D-495E-A555-A6647EE32C97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
